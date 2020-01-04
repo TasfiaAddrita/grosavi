@@ -1,0 +1,29 @@
+{
+  "name": "grosavi",
+  "version": "1.0.0",
+  "description": "Web app that allows you to compare prices of grocery items between different supermarkets",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TasfiaAddrita/grosavi.git"
+  },
+  "author": "Tasfia Addrita",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TasfiaAddrita/grosavi/issues"
+  },
+  "homepage": "https://github.com/TasfiaAddrita/grosavi#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
