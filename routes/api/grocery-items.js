@@ -1,4 +1,21 @@
 const express = require("express");
+
+/* mongodb driver for nodejs
+const MongoClient = require("mongodb").MongoClient; 
+// Connection URL
+const url = "mongodb://localhost:5000";
+// Database Name
+const dbName = "groceryItems";
+// Create a new MongoClient
+const client = new MongoClient(url);
+// Use connect method to connect to the Server
+client.connect(function(err) {
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+  client.close();
+});
+*/
+
 const router = express.Router();
 
 // Grocery Item Model
@@ -33,6 +50,17 @@ router.get("/:id", (req, res) => {
   GroceryItem.findById(req.params.id).then(groceryItems =>
     res.json(groceryItems)
   );
+});
+
+// @route   UPDATE api/grocery-items/:id
+// @desc    UPDATE a grocery item by id
+// @access  Public
+router.put("/:id", (req, res) => {
+  GroceryItem.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true
+  }).then(updatedItem => {
+    res.json(updatedItem);
+  });
 });
 
 // @route   DELETE api/grocery-items/:id
