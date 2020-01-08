@@ -58,14 +58,14 @@ class AppNavbar extends Component {
         >
           <Container>
             <NavbarBrand href="/">grosavi</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink href="#">Cart</NavLink>
-                </NavItem>
-              </Nav>
-            </Collapse>
+            {/* <NavbarToggler onClick={this.toggle} /> */}
+            {/* <Collapse isOpen={this.state.isOpen} navbar> */}
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="#">Cart</NavLink>
+              </NavItem>
+            </Nav>
+            {/* </Collapse> */}
           </Container>
         </Navbar>
       </div>

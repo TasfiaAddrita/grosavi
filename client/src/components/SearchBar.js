@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { InputGroup, Input, InputGroupAddon, Button, Row } from "reactstrap";
 import searchIcon from "../assets/search_icon.png";
-import "./SearchBar.css";
+import "./css/SearchBar.css";
 
 class SearchBar extends Component {
   render() {
