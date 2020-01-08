@@ -1,20 +1,22 @@
-import { GET_GROCERY_ITEMS } from "../actions/types";
+import { GET_GROCERY_ITEMS, ITEMS_LOADING } from "../actions/types";
 
 const initialState = {
-  groceryItems: [
-    { id: 1, name: "Eggs" },
-    { id: 2, name: "Milk" },
-    { id: 3, name: "Water" },
-    { id: 4, name: "Cheese" },
-    { id: 4, name: "Apples" }
-  ]
+  groceryItems: [],
+  loading: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_GROCERY_ITEMS:
       return {
-        ...state
+        ...state,
+        groceryItems: action.payload,
+        loading: false
+      };
+    case ITEMS_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;
