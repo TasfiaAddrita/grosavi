@@ -8,9 +8,7 @@ import {
   CardSubtitle,
   Button,
   Row,
-  Col,
-  ListGroup,
-  ListGroupItem
+  Col
 } from "reactstrap";
 import placeholder from "../assets/placeholder1.svg";
 import "./css/GroceryItem.css";
@@ -26,7 +24,8 @@ class GroceryItem extends Component {
     const { groceryItems } = this.props.groceryItem;
     return (
       <Row>
-        {groceryItems.map(({ id, name }) => (
+        {groceryItems.map(({ id, name, weight }) => (
+          //   <Col lg="4" className="grocery-item-card">
           <Col lg="3" className="grocery-item-card">
             <div>
               <Card>
@@ -38,13 +37,14 @@ class GroceryItem extends Component {
                 />
                 <CardBody>
                   <CardTitle>{name}</CardTitle>
-                  <CardSubtitle>Card subtitle</CardSubtitle>
+                  <CardSubtitle>{weight} oz</CardSubtitle>
                   {/* <CardText>
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </CardText> */}
-                  <Button>#</Button> {/* replace me with input field */}
-                  <Button>Add to Cart</Button>
+                  <Button size="sm">#</Button>{" "}
+                  {/* replace me with input field */}
+                  <Button size="sm">Add to Cart</Button>
                 </CardBody>
               </Card>
             </div>

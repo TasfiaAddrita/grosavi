@@ -64,6 +64,9 @@ class AppNavbar extends Component {
               <NavItem>
                 <NavLink href="#">Cart</NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink href="#">Account</NavLink>
+              </NavItem>
             </Nav>
             {/* </Collapse> */}
           </Container>
