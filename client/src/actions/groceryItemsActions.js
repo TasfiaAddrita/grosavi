@@ -11,6 +11,14 @@ export const getGroceryItems = () => dispatch => {
   );
 };
 
+export const setGroceryItemsLoading = () => {
+  return {
+    type: ITEMS_LOADING
+  };
+};
+
+/***************************************/
+
 export const getGroceryItemById = id => dispatch => {
   axios.get(`api/grocery-items/${id}`, id).then(res =>
     // dispatch({
@@ -19,10 +27,4 @@ export const getGroceryItemById = id => dispatch => {
     // })
     console.log(res.data)
   );
-};
-
-export const setGroceryItemsLoading = () => {
-  return {
-    type: ITEMS_LOADING
-  };
 };

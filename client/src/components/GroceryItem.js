@@ -27,11 +27,12 @@ class GroceryItem extends Component {
   }
 
   getGroceryItemById = id => {
+    console.log(id);
     this.props.getGroceryItemById(id);
   };
 
-  addGroceryItemToCart = (event, groceryItem) => {
-    event.persist();
+  addGroceryItemToCart = groceryItem => {
+    console.log(groceryItem);
     this.props.addGroceryItemToCart(groceryItem);
   };
 
@@ -66,7 +67,12 @@ class GroceryItem extends Component {
                   {/* <Input size="sm" type="text" placeholder="Quant" /> */}
                   <Button
                     size="sm"
-                    onClick={this.addGroceryItemToCart.bind(this, _id)}
+                    onClick={this.addGroceryItemToCart.bind(this, {
+                      _id,
+                      name,
+                      weight,
+                      image
+                    })}
                   >
                     Add to Cart
                   </Button>
