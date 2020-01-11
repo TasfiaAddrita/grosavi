@@ -11,6 +11,16 @@ export const getGroceryItems = () => dispatch => {
   );
 };
 
+export const getGroceryItemById = id => dispatch => {
+  axios.get(`api/grocery-items/${id}`, id).then(res =>
+    // dispatch({
+    //   type: GET_GROCERY_ITEM_BY_ID,
+    //   payload: res.data
+    // })
+    console.log(res.data)
+  );
+};
+
 export const setGroceryItemsLoading = () => {
   return {
     type: ITEMS_LOADING

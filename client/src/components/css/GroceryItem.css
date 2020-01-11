@@ -10,3 +10,9 @@
     font-size: large;
     font-weight: bold;
 }
+/* 
+.card-body > input.form-control {
+    width: 60px;
+    display: inline-block;
+    margin-top: 20px;
+} */

@@ -11,7 +11,7 @@ class SearchBar extends Component {
           <Input placeholder="Search grosavi..." />
           <InputGroupAddon addonType="append">
             <Button className="search-icon">
-              <img alt="" class="invert" src={searchIcon} />
+              <img alt="" className="invert" src={searchIcon} />
             </Button>
           </InputGroupAddon>
         </InputGroup>
