@@ -9,7 +9,10 @@ import {
   Button,
   Input,
   Row,
-  Col
+  Col,
+  InputGroup,
+  InputGroupAddon,
+  Form
 } from "reactstrap";
 import placeholder from "../assets/placeholder1.svg";
 import "./css/GroceryItem.css";
@@ -62,7 +65,7 @@ class GroceryItem extends Component {
                   {/* <Button size="sm" onClick={this.REPLACE_ME}>
                     #
                   </Button>{" "} */}
-                  <Button size="sm">#</Button>{" "}
+                  {/* <Button size="sm">#</Button>{" "} */}
                   {/* replace me with input field */}
                   {/* <Input size="sm" type="text" placeholder="Quant" /> */}
                   <Button
@@ -76,6 +79,16 @@ class GroceryItem extends Component {
                   >
                     Add to Cart
                   </Button>
+                  {/* <Form>
+                    <FormGroup>
+                      <Input placeholder="Quantity" />
+                      <InputGroupAddon addonType="append">
+                        <Button>Add to Cart</Button>
+                      </InputGroupAddon>
+                    </FormGroup>
+                  </Form> */}
+
+                  {/***********************/}
                 </CardBody>
               </Card>
             </div>
