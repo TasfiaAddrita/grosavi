@@ -21,7 +21,8 @@ router.post("/", (req, res) => {
   const newCartItem = new CartItem({
     name: req.body.name,
     weight: req.body.weight,
-    image: req.body.image
+    image: req.body.image,
+    quantity: req.body.quantity
   });
 
   newCartItem.save().then(cartItem => res.json(cartItem));

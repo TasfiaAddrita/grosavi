@@ -12,7 +12,8 @@ import {
   Col,
   InputGroup,
   InputGroupAddon,
-  Form
+  Form,
+  FormGroup
 } from "reactstrap";
 import placeholder from "../assets/placeholder1.svg";
 import "./css/GroceryItem.css";
@@ -34,7 +35,9 @@ class GroceryItem extends Component {
     this.props.getGroceryItemById(id);
   };
 
-  addGroceryItemToCart = groceryItem => {
+  addGroceryItemToCart = (e, groceryItem) => {
+    e.preventDefault();
+    groceryItem.quantity = parseInt(e.target.quantity.value);
     console.log(groceryItem);
     this.props.addGroceryItemToCart(groceryItem);
   };
@@ -43,52 +46,43 @@ class GroceryItem extends Component {
     const { groceryItems } = this.props.groceryItem;
     return (
       <Row>
-        {groceryItems.map(({ _id, name, weight, image }) => (
-          //   <Col lg="4" className="grocery-item-card" key={_id}>
-          <Col lg="3" className="grocery-item-card" key={_id}>
+        {/* {groceryItems.map(({ _id, name, weight, image }) => ( */}
+        {groceryItems.map(groceryItem => (
+          <Col lg="3" className="grocery-item-card" key={groceryItem._id}>
             <div>
               <Card>
                 <CardImg
                   top
                   width="100%"
                   //   src={placeholder}
-                  src={image}
+                  src={groceryItem.image}
                   alt="Card image cap"
                 />
                 <CardBody>
-                  <CardTitle>{name}</CardTitle>
-                  <CardSubtitle>{weight} oz</CardSubtitle>
-                  {/* <CardText>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </CardText> */}
-                  {/* <Button size="sm" onClick={this.REPLACE_ME}>
-                    #
-                  </Button>{" "} */}
-                  {/* <Button size="sm">#</Button>{" "} */}
-                  {/* replace me with input field */}
-                  {/* <Input size="sm" type="text" placeholder="Quant" /> */}
-                  <Button
-                    size="sm"
-                    onClick={this.addGroceryItemToCart.bind(this, {
-                      _id,
-                      name,
-                      weight,
-                      image
-                    })}
+                  <CardTitle>{groceryItem.name}</CardTitle>
+                  <CardSubtitle>{groceryItem.weight} oz</CardSubtitle>
+                  <Form
+                    onSubmit={e => {
+                      this.addGroceryItemToCart(e, groceryItem); // https://stackoverflow.com/questions/42597602/react-onclick-pass-event-with-parameter
+                    }}
                   >
-                    Add to Cart
-                  </Button>
-                  {/* <Form>
-                    <FormGroup>
-                      <Input placeholder="Quantity" />
-                      <InputGroupAddon addonType="append">
-                        <Button>Add to Cart</Button>
-                      </InputGroupAddon>
-                    </FormGroup>
-                  </Form> */}
-
-                  {/***********************/}
+                    <div className="quantity-group">
+                      <Input
+                        bsSize="sm"
+                        placeholder="#"
+                        className="quantity-input"
+                        name="quantity"
+                      />
+                      <Button
+                        type="submit"
+                        className="ml-2 quantity-btn"
+                        size="sm"
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </Form>
+                  {/*  */}
                 </CardBody>
               </Card>
             </div>
