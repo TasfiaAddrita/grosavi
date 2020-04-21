@@ -82,7 +82,6 @@ class GroceryItem extends Component {
                       </Button>
                     </div>
                   </Form>
-                  {/*  */}
                 </CardBody>
               </Card>
             </div>
