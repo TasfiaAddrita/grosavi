@@ -1,0 +1,38 @@
+{
+  "name": "grosavi",
+  "version": "1.0.0",
+  "description": "Web app that allows you to compare prices of grocery items between different supermarkets",
+  "main": "app.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix ../client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "mocha",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TasfiaAddrita/grosavi.git"
+  },
+  "author": "Tasfia Addrita",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TasfiaAddrita/grosavi/issues"
+  },
+  "homepage": "https://github.com/TasfiaAddrita/grosavi#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.2",
+    "express": "^4.17.1",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.1.2",
+    "nodemon": "^2.0.2"
+  }
+}
