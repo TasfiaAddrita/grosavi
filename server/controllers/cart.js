@@ -5,7 +5,7 @@ const router = express.Router();
 // CartItem Model
 const CartItem = require("../models/Cart");
 
-// @route   GET api/cart-items
+// @route   GET api/cart
 // @desc    Get all cart items
 // @access  Public
 router.get("/", (req, res) => {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     .then(cartItems => res.json(cartItems));
 });
 
-// @route   POST api/cart-items
+// @route   POST api/cart
 // @desc    Create a cart item
 // @access  Public
 router.post("/", (req, res) => {
@@ -27,5 +27,7 @@ router.post("/", (req, res) => {
 
   newCartItem.save().then(cartItem => res.json(cartItem));
 });
+
+// update and delete
 
 module.exports = router;

@@ -21,7 +21,7 @@ const router = express.Router();
 // Grocery Item Model
 const GroceryItem = require("../models/GroceryItem");
 
-// @route   GET api/grocery-items
+// @route   GET api/items
 // @desc    Get all grocery items
 // @access  Public
 router.get("/", (req, res) => {
@@ -30,9 +30,9 @@ router.get("/", (req, res) => {
     .then(groceryItems => res.json(groceryItems));
 });
 
-// @route   POST api/grocery-items
+// @route   POST api/items
 // @desc    Create a grocery item
-// @access  Public
+// @access  Public --> Change to Admin
 router.post("/", (req, res) => {
   const newGroceryItem = new GroceryItem({
     name: req.body.name,
@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
   newGroceryItem.save().then(groceryItem => res.json(groceryItem));
 });
 
-// @route   GET api/grocery-items/:id
+// @route   GET api/items/:id
 // @desc    Get a grocery item by id
 // @access  Public
 router.get("/:id", (req, res) => {
@@ -52,9 +52,9 @@ router.get("/:id", (req, res) => {
   );
 });
 
-// @route   UPDATE api/grocery-items/:id
+// @route   UPDATE api/items/:id
 // @desc    UPDATE a grocery item by id
-// @access  Public
+// @access  Public --> Change to Admin
 router.put("/:id", (req, res) => {
   GroceryItem.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
@@ -63,9 +63,9 @@ router.put("/:id", (req, res) => {
   });
 });
 
-// @route   DELETE api/grocery-items/:id
+// @route   DELETE api/items/:id
 // @desc    Delete a grocery item
-// @access  Public
+// @access  Public --> Change to Admin
 router.delete("/:id", (req, res) => {
   GroceryItem.findById(req.params.id)
     .then(groceryItem => groceryItem.remove())

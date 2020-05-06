@@ -1,4 +1,4 @@
-const app = require("../server")
+const app = require("../server");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const expect = chai.expect;
@@ -8,4 +8,3 @@ const GroceryItem = require("../models/GroceryItem");
 
 chai.should();
 chai.use(chaiHttp);
-
