@@ -18,10 +18,10 @@ client.connect(function(err) {
 
 const router = express.Router();
 
-// Product Model
-const Product = require("../models/Product");
+// Product model
+const Product = require("../models").product
 
-// @route   GET api/products
+// @route   GET /products
 // @desc    Get all products
 // @access  Public
 router.get("/", (req, res) => {
@@ -30,7 +30,7 @@ router.get("/", (req, res) => {
     .then(products => res.json(products));
 });
 
-// @route   POST api/products
+// @route   POST /products
 // @desc    Create a grocery item
 // @access  Public --> Change to Admin
 router.post("/", (req, res) => {
@@ -43,7 +43,7 @@ router.post("/", (req, res) => {
   newProduct.save().then(product => res.json(product));
 });
 
-// @route   GET api/products/:id
+// @route   GET /products/:id
 // @desc    Get a product by id
 // @access  Public
 router.get("/:id", (req, res) => {
@@ -52,8 +52,8 @@ router.get("/:id", (req, res) => {
   );
 });
 
-// @route   UPDATE api/products/:id
-// @desc    UPDATE a product by id
+// @route   UPDATE /products/:id
+// @desc    Update a product by id
 // @access  Public --> Change to Admin
 router.put("/:id", (req, res) => {
   Product.findOneAndUpdate({ _id: req.params.id }, req.body, {
@@ -63,7 +63,7 @@ router.put("/:id", (req, res) => {
   });
 });
 
-// @route   DELETE api/products/:id
+// @route   DELETE /products/:id
 // @desc    Delete a product
 // @access  Public --> Change to Admin
 router.delete("/:id", (req, res) => {

@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-// const groceryItems = require("./routes/api/grocery-items");
-// const cartItems = require("./routes/api/cart-items");
 const controller = require("./controllers");
 
 const app = express();
@@ -22,10 +20,9 @@ mongoose
   .catch(err => console.log(err));
 
 // Use Routes
-// app.use("/api/grocery-items", groceryItems);
-// app.use("/api/cart-items", cartItems);
-app.use("/api/items", controller.groceryItems);
-app.use("/api/cart", controller.cart);
+app.use("/products", controller.products);
+app.use("/markets", controller.markets);
+app.use("/", controller.auth);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
