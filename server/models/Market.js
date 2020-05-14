@@ -5,18 +5,19 @@ const MarketSchema = new Schema({
   name: { type: String, required: true },
   address: { type: String, required: true },
   city: { type: String, required: true },
-  state: { type: String, required: true },
+  state: { type: String, require: true },
   zip: { type: String, required: true },
-  logo: { type: String, // link to image
+  logo: {
+    type: String, // link to image
     default:
-      "https://img.favpng.com/17/0/21/computer-icons-retail-online-shopping-png-favpng-p8VKagPJEXbBQzJjzbTheQCGx.jpg"
-  }
+      "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081"
+  }, 
+  inventory: [{ type: Schema.Types.ObjectId, ref: "MarketItem" }]
 });
 
-const MarketItemSchema = new Schema({
-  market: { type: Schema.Types.ObjectId, ref: "Market" },
-  item: { type: Schema.Types.ObjectId, ref: "GroceryItem" },
-  stock: { type: Number, default: 1 },
+const MarketItemSchema = new Schema({ 
+  item: { type: Schema.Types.ObjectId, ref: "Product" },
+  stock: { type: Number, required: true },
   price: { type: Number, required: true }
 });
 
@@ -24,13 +25,3 @@ module.exports = {
   Market: mongoose.model("Market", MarketSchema),
   MarketItem: mongoose.model("MarketItem", MarketItemSchema)
 };
-
-// supermarket model
-// name
-// address
-// logo
-
-// supermarket <--> grocery item
-// supermarket id
-// groceryItem id
-// price

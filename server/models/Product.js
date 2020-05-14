@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-const GroceryItemSchema = new Schema({
+const ProductSchema = new Schema({
   name: { type: String, required: true },
   brand: { type: String, required: true },
   weight: { type: Number, required: true },
@@ -17,4 +17,4 @@ const GroceryItemSchema = new Schema({
   // }
 });
 
-module.exports = GroceryItem = mongoose.model("GroceryItem", GroceryItemSchema);
+module.exports = Product = mongoose.model("Product", ProductSchema);

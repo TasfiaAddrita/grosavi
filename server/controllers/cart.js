@@ -6,7 +6,7 @@ const router = express.Router();
 const CartItem = require("../models/Cart");
 
 // @route   GET api/cart
-// @desc    Get all cart items
+// @desc    Get all items in user's cart
 // @access  Public
 router.get("/", (req, res) => {
   CartItem.find()
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 // @route   POST api/cart
-// @desc    Create a cart item
+// @desc    Add an item to user's cart
 // @access  Public
 router.post("/", (req, res) => {
   const newCartItem = new CartItem({

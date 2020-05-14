@@ -18,57 +18,57 @@ client.connect(function(err) {
 
 const router = express.Router();
 
-// Grocery Item Model
-const GroceryItem = require("../models/GroceryItem");
+// Product Model
+const Product = require("../models/Product");
 
-// @route   GET api/items
-// @desc    Get all grocery items
+// @route   GET api/products
+// @desc    Get all products
 // @access  Public
 router.get("/", (req, res) => {
-  GroceryItem.find()
+  Product.find()
     // .sort({ date: -1 }) // most recent
-    .then(groceryItems => res.json(groceryItems));
+    .then(products => res.json(products));
 });
 
-// @route   POST api/items
+// @route   POST api/products
 // @desc    Create a grocery item
 // @access  Public --> Change to Admin
 router.post("/", (req, res) => {
-  const newGroceryItem = new GroceryItem({
+  const newProduct = new Product({
     name: req.body.name,
     weight: req.body.weight,
     image: req.body.image
   });
 
-  newGroceryItem.save().then(groceryItem => res.json(groceryItem));
+  newProduct.save().then(product => res.json(product));
 });
 
-// @route   GET api/items/:id
-// @desc    Get a grocery item by id
+// @route   GET api/products/:id
+// @desc    Get a product by id
 // @access  Public
 router.get("/:id", (req, res) => {
-  GroceryItem.findById(req.params.id).then(groceryItems =>
-    res.json(groceryItems)
+  Product.findById(req.params.id).then(product =>
+    res.json(product)
   );
 });
 
-// @route   UPDATE api/items/:id
-// @desc    UPDATE a grocery item by id
+// @route   UPDATE api/products/:id
+// @desc    UPDATE a product by id
 // @access  Public --> Change to Admin
 router.put("/:id", (req, res) => {
-  GroceryItem.findOneAndUpdate({ _id: req.params.id }, req.body, {
+  Product.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
-  }).then(updatedItem => {
-    res.json(updatedItem);
+  }).then(updatedProduct => {
+    res.json(updatedProduct);
   });
 });
 
-// @route   DELETE api/items/:id
-// @desc    Delete a grocery item
+// @route   DELETE api/products/:id
+// @desc    Delete a product
 // @access  Public --> Change to Admin
 router.delete("/:id", (req, res) => {
-  GroceryItem.findById(req.params.id)
-    .then(groceryItem => groceryItem.remove())
+  Product.findById(req.params.id)
+    .then(product => product.remove())
     .then(() => res.json({ success: true }))
     .catch(err => res.status(404).json({ success: false }));
 });

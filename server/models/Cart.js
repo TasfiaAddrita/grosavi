@@ -2,14 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-
 const CartSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User" },
-  cart: [{ type: Schema.Types.ObjectId, ref: "CartItem" }]
+  cartItems: [{ type: Schema.Types.ObjectId, ref: "CartItem" }]
 })
 
 const CartItemSchema = new Schema({
-  item: { type: Schema.Types.ObjectId, ref: "GroceryItem" }, // create a foreign key to grocery item
+  item: { type: Schema.Types.ObjectId, ref: "Product" }, // create a foreign key to product
   quantity: { type: Number, default: 1 },
   // timestamps: {
   //   createdAt: "created_at",
