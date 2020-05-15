@@ -19,10 +19,7 @@ router.get("/", (req, res) => {
 // @access  Public
 router.post("/", (req, res) => {
   const newCartItem = new CartItem({
-    name: req.body.name,
-    weight: req.body.weight,
-    image: req.body.image,
-    quantity: req.body.quantity
+    pass
   });
 
   newCartItem.save().then(cartItem => res.json(cartItem));
