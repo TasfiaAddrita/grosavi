@@ -7,7 +7,7 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true },
-  password: { type: String, select: false },
+  // password: { type: String, select: false },
   cart: { type: Schema.Types.ObjectId, ref: "Cart" }
 })
 
@@ -21,6 +21,8 @@ UserSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose, {
+  usernameField: "email"
+});
 
 module.exports = User = mongoose.model("User", UserSchema);

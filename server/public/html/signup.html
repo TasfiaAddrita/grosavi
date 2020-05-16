@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up | Grosavi</title>
+  </head>
+
+  <body>
+    <form action="/api/signup" method="post">
+      <div class="title">
+        <h3>Sign-up</h3>
+      </div>
+      <div class="field">
+        <label>First name:</label>
+        <input type="text" name="firstName" />
+        <br />
+      </div>
+      <div class="field">
+        <label>Last name:</label>
+        <input type="text" name="lastName" />
+        <br />
+      </div>
+      <div class="field">
+        <label>Email:</label>
+        <input type="text" name="email" />
+        <br />
+      </div>
+      <div class="field">
+        <label>Password:</label>
+        <input type="password" name="password" required />
+      </div>
+      <div class="field">
+        <input class="submit-btn" type="submit" value="Submit" required />
+      </div>
+      <label id="error-message"></label>
+    </form>
+  </body>
+
+</html>
