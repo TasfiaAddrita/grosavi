@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const connectEnsureLogin = require("connect-ensure-login");
 const User = require("../models/User");
 
 router.get("/", (req, res) => {
   // console.log("hello world");
-  res.redirect("/api/login");
+  res.redirect("/api/home");
 })
 
 // @route   GET /api/signup
@@ -45,7 +46,7 @@ router.get("/login", (req, res) => {
 // @desc    Authenticate user
 // @access  Public
 router.post('/login', passport.authenticate('local', {
-    failureRedirect: '/api/fail', 
+    failureRedirect: '/api/login', 
     failureFlash: true 
   }), (req, res) => {
     console.log("User successfully logged in.")
@@ -60,8 +61,8 @@ router.get("/logout", (req, res) => {
   res.redirect("/api/login");
 })
 
-router.get("/home", (req, res) => {
-  res.sendFile("home.html", { root: "./public/html" });
+router.get("/home", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
+  res.sendFile("authorize.html", { root: "./public/html" });
 })
 
 module.exports = router;
